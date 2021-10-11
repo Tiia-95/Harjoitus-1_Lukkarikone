@@ -1,0 +1,3 @@
+function omaFunktio (){
+    alert("Kukkuu");
+}
