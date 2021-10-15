@@ -1,16 +1,90 @@
 <!DOCTYPE html>
-<html lang="fi">
-    <head>
-        <title>Lukkari</title>
-        <meta charset="utf-8"/>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukkari</title>
+</head>
 
-        <link rel="stylesheet" href="Lukkari.css">
-        <script src="Lukkari.js"></script>
-    
-    </head>
-    <body>
-		
-	<button onclick="omaFunktio()">Paina!</button> 
-		
-	</body>
+    <link rel="stylesheet" href="Lukkari.css">
+    <script src="Lukkari.js"></script>
+
+<body>
+    <h1>Tervetuloa sivuille!</h1>
+
+    <table id="lukkari">
+        <tr>
+
+        </tr>
+    </table>
+
+    <form name="myForm" action="#" method="post">
+        <p>Mitä haluaisit lisätä?</p>
+
+        <form id="tyyppi">
+            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Treeni">Treeni<br>
+
+            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Oppitunti">Oppitunti<br>
+
+            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Muu meno">Muu meno<br>
+
+            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Itsenäinen opiskelu">Itsenäinen opiskelu<br>
+
+            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Ruokailu">Ruokailu<br>
+
+            Valitsit: <input type="text" id="paaAihe">
+        </form>
+
+        <br><br>
+
+        Anna aiheen tarkennus: <input type="text" id="aihe" /> <br> <br>
+
+        <p>Valitse päivä:</p>
+
+        <form id="paiva">
+            <input type="radio"  name="paiva" value="Maanantai">
+            <label for="ma">Maanantai</label><br>
+
+            <input type="radio" id="ti" name="paiva" value="Tiistai">
+            <label for="ti">Tiistai</label><br>
+
+            <input type="radio" id="ke" name="paiva" value="Keskiviikko">
+            <label for="ke">Keskiviikko</label><br>
+
+            <input type="radio" id="to" name="paiva" value="Torstai">
+            <label for="to">Torstai</label><br>
+
+            <input type="radio" id="pe" name="paiva" value="Perjantai">
+            <label for="pe">Perjantai</label><br>
+
+            <input type="radio" id="la" name="paiva" value="Lauantai">
+            <label for="la">Lauantai</label><br>
+
+            <input type="radio" id="su" name="paiva" value="Sunnuntai">
+            <label for="su">Sunnuntai</label>
+        </form>
+        <br><br>
+
+        <form action="/action_page.php">
+            <label for="appt">Alotus aika: </label>
+            <input type="time" id="aAika" name="appt">
+        </form>
+
+        <form action="/action_page.php">
+            <label for="appt">Lopetus aika: </label>
+            <input type="time" id="lAika" name="appt">
+        </form>
+
+        <br>
+
+        Lisätietoa: <input type="text" id="info" \> <br> <br>
+        
+        <input type="button" onclick="tarkastus()" value="Lisää"\>
+    </form>
+
+
+
+
+</body>
 </html>
