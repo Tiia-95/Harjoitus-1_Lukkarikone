@@ -6,3 +6,88 @@ body {
 h1 {
     text-align: center;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 10;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: rgb(0, 34, 46);
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul li:hover {
+  background: rgb(0, 64, 87);
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.addBtn {
+  background: rgb(233, 181, 188);
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: rgb(255, 245, 245);
+}
+
+#myForm {
+  background-color: rgb(0, 34, 46);
+  margin: 100px auto;
+  padding: 40px;
+  width: 70%;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+.tab {
+  display: none;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgb(255, 245, 245);
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step.finish {
+  background-color: #04AA6D;
+}
