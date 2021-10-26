@@ -5,81 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lukkari</title>
-    
 
 </head>
 
     <link rel="stylesheet" href="Lukkari.css">
-    
-    
 
 <body>
     <h1>Tervetuloa sivuille!</h1>
-    
-    <ul id="tulostus">
+
+    <div class="lista">
+        <div class="yht">
+            <h4>Viikolla käytetyt tunnit:</h4>
+            <table id=yhtLista>
+                <tr>
+                    <td>Yhteensä: </td>
+                    <td id="kaikkiyht"></td>
+                </tr>
+                <tr>
+                    <td>Treenit yhteensä: </td>
+                    <td id="treeniyht"></td>
+                </tr>
+                <tr>
+                    <td>Oppitunnit yhteensä: </td>
+                    <td id="oppiyht"></td>
+                </tr>
+                <tr>
+                    <td>Itsenäinen opiskelu yhteensä: </td>
+                    <td id="itseyht"></td>
+                </tr>
+                <tr>
+                    <td>Opiskeluun yhteensä: </td>
+                    <td id="opiskeluyht"></td>
+                </tr>
+                <tr>
+                    <td>Ruokailuihin yhteensä: </td>
+                    <td id="ruokayht"></td>
+                </tr>
+                <tr>
+                    <td>Muut menot yhteensä: </td>
+                    <td id="muuyht"></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="eritelty">
+            <h4>Viikolle lisätyt menot eriteltyinä:</h4>
+
+            <ul id="tulostus">
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="lomake">
+        <form name="omaOhjelma" action="#" method="post">
+
+            <form id="tyyppi">
+                <h4>Mitä haluaisit lisätä?</h4>
+                <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Treeni">Treeni<br>
+
+                <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Oppitunti">Oppitunti<br>
+
+                <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Muu meno">Muu meno<br>
+
+                <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Itsenäinen opiskelu">Itsenäinen opiskelu<br>
+
+                <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Ruokailu">Ruokailu<br>
+                
+            </form>
+
+            <h4>Anna aiheen tarkennus:</h4>
+            <input type="text" id="aihe" /> <br>
+
+            <h4>Lisätietoa:</h4>
+            <input type="text" id="info" \> <br> <br>
             
-    </ul>
+            <h4>Valitse päivä:</h4>
 
-    <form name="omaOhjelma" action="#" method="post">
+                <form id="paiva">
+                    <input type="radio"  name="paiva" onclick="paivanvalinta(this.value)" value="Maanantai">Maanantai<br>
 
-        <form id="tyyppi">Mitä haluaisit lisätä?<br><br>
-            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Treeni">Treeni<br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Tiistai">Tiistai<br>
 
-            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Oppitunti">Oppitunti<br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Keskiviikko">Keskiviikko<br>
 
-            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Muu meno">Muu meno<br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Torstai">Torstai<br>
 
-            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Itsenäinen opiskelu">Itsenäinen opiskelu<br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Perjantai">Perjantai<br>
 
-            <input type="radio" name="tyyppi" onclick="myFunction(this.value)" value="Ruokailu">Ruokailu<br>
-            <br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Lauantai">Lauantai<br>
 
-            Valitsit: <input type="text" id="asia">
-            <br><br>
+                    <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Sunnuntai">Sunnuntai<br>
+                
+                </form>
 
-        </form>
+                <form action="/action_page.php">
+                    <label for="appt"><h4>Aloitus aika:</h4> </label>
+                    <input type="time" id="aAika" name="appt">
+                </form>
+                <br>
 
-        Anna aiheen tarkennus: <input type="text" id="aihe" /> <br>
+                <form action="/action_page.php">
+                    <label for="appt"><h4>Lopetus aika:</h4> </label>
+                    <input type="time" id="lAika" name="appt">
+                </form>
+                <br>
 
-        <p>Valitse päivä:</p>
+                
 
-            <form id="paiva">
-                <input type="radio"  name="paiva" onclick="paivanvalinta(this.value)" value="Maanantai">Maanantai<br>
+                <input type="button" onclick="uusiElementti()" class="addBtn" value="Lisää"\>
 
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Tiistai">Tiistai<br>
-
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Keskiviikko">Keskiviikko<br>
-
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Torstai">Torstai<br>
-
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Perjantai">Perjantai<br>
-
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Lauantai">Lauantai<br>
-
-                <input type="radio" name="paiva" onclick="paivanvalinta(this.value)" value="Sunnuntai">Sunnuntai<br><br>
-            
-                Valitsit: <input type="text" id="valittuPaiva">
                 <br><br>
-            </form>
-
-            <form action="/action_page.php">
-                <label for="appt">Alotus aika: </label>
-                <input type="time" id="aAika" name="appt">
-            </form>
-            <br>
-
-            <form action="/action_page.php">
-                <label for="appt">Lopetus aika: </label>
-                <input type="time" id="lAika" name="appt">
-            </form>
-            <br>
-
-            Lisätietoa: <input type="text" id="info" \> <br> <br>
-
-            <input type="button" onclick="uusiElementti()" class="addBtn" value="Lisää_uusi"\>
-
-            <br><br>
-    </form>
+        </form>
+    </div>
+    <br><br>
 
     <script src="Lukkari.js" type="text/javascript" ></script>
 

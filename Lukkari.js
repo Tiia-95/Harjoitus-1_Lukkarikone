@@ -19,21 +19,22 @@ var i;
   }
 
 var paaAihe = "";
+var edetaanko = false;
 
 function uusiElementti() {
-    tarkastus();
+  tarkastus();
+  if (edetaanko == false){
+    alert("VIRHE! Lisää puuttuva tieto!")
+  } else {
     tyhjennys();
     var li = document.createElement("li");
     var inputValue = paaAihe;
     var t = document.createTextNode(inputValue);
     li.appendChild(t);
-    if (inputValue === '') {
-      alert("Sinun täytyy valita jokin aihe");
-    } else {
-      document.getElementById("tulostus").appendChild(li);
-    }
-    paaAihe = "";
+    
+    document.getElementById("tulostus").appendChild(li);
   
+    paaAihe = "";
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
     span.className = "close";
@@ -42,60 +43,69 @@ function uusiElementti() {
   
     for (i = 0; i < close.length; i++) {
       close[i].onclick = function() {
+        //Lista objekti poistetaan täällä
         var div = this.parentElement;
         div.style.display = "none";
       }
     }
   }
-
-function myFunction(tyyppi) {
-  document.getElementById("asia").value = tyyppi;
   }
 
-function paivanvalinta(paiva) {
-  document.getElementById("valittuPaiva").value = paiva;
-  }
+
 
 function tarkastus() {
-  var otsikko = document.getElementById("asia").value;
+  var otsikko = "";
+  var paiva1 = "";
+  var ele = document.getElementsByName("tyyppi");
+   for(var i=0;i<ele.length;i++)
+      if (ele[i].checked) {
+        otsikko = ele[i].value;
+      }
+  
+  var ele = document.getElementsByName("paiva");
+  for(var i=0;i<ele.length;i++)
+      if (ele[i].checked) {
+        paiva1 = ele[i].value;
+      }
+  
   var tarkennus = document.getElementById("aihe").value;
-  var paiva = document.getElementById("valittuPaiva").value;
   var aloitus = document.getElementById("aAika").value;
   var lopetus = document.getElementById("lAika").value;
   var lisatieto = document.getElementById("info").value;
-
   if (otsikko == ""){
     alert("Valitse jokin aihe, ennen kuin voit lisätä kentän");
+    edetaanko = false;
   }
-  else if (tarkennus == ""){
-    tarkennus = " ";
+  else if (paiva1 == ""){
+    alert("Valitse päivä, jolle haluat lisätä tapahtuman");
+    edetaanko = false;
   }
-  else if (paiva == ""){
-    alert("Valitse päivä, jolle haluat lisätä tapahtuman")
-  }
-  else if (aloitus == "" || lopetus == ""){
-    alert("Lisää vielä aika")
+  else if (aloitus == 0 || lopetus == 0){
+    alert("Lisää vielä aika");
+    edetaanko = false;
   }
   else if (aloitus > lopetus){
-    alert("Lopetus aika ei voi olla ennen aloitus aikaa")
+    alert("Lopetus aika ei voi olla ennen aloitus aikaa");
+    edetaanko = false;
+  } 
+  else {
+    edetaanko = true;
+    var aika = aika_ero(aloitus, lopetus);
+    var lisattava = `${otsikko} : ${tarkennus} : ${lisatieto} : ${paiva1} : ${aloitus}-${lopetus} : ${aika}h`;
+    paaAihe = lisattava;
+    yhteenlasku(aika, otsikko);
   }
-  var aika  = aika_ero(aloitus, lopetus);
-
-  var lisattava = `${otsikko} : ${tarkennus} : ${lisatieto} : ${paiva} : ${aloitus}-${lopetus} : ${aika}h`;
-  paaAihe = lisattava;
-  
 }
 
 function aika_ero(aloitus, lopetus) {
+  
   var ero = ( new Date("1970-1-1 " + lopetus) - new Date("1970-1-1 " + aloitus) );
   ero = Math.round((ero / 60000 / 60) * 100) / 100;
   return ero;
 }
 
 function tyhjennys() {
-  document.getElementById("asia").value = "";
   document.getElementById("aihe").value= "";
-  document.getElementById("valittuPaiva").value= "";
   document.getElementById("aAika").value= "";
   document.getElementById("lAika").value= "";
   document.getElementById("info").value= "";
@@ -105,5 +115,47 @@ function tyhjennys() {
   var ele = document.getElementsByName("paiva");
   for(var i=0;i<ele.length;i++)
       ele[i].checked = false;
+}
 
+var kaikki = 0;
+var treyht = 0;
+var otyht = 0;
+var ioyht = 0;
+var oppiyht = 0;
+var ruokayht = 0;
+var muutyht = 0;
+
+function yhteenlasku(aika, otsikko) {
+  
+  kaikki = kaikki + aika;
+  document.getElementById("kaikkiyht").innerHTML = kaikki;
+  
+  if(otsikko == "Treeni"){
+    treyht = treyht + aika;
+    document.getElementById("treeniyht").innerHTML = treyht;
+  }
+  else if(otsikko == "Oppitunti"){
+    otyht = otyht + aika;
+    oppiyht = oppiyht + aika;
+    document.getElementById("oppiyht").innerHTML = otyht;
+    document.getElementById("opiskeluyht").innerHTML = oppiyht;
+  }
+  else if(otsikko == "Muu meno"){
+    muutyht = muutyht + aika;
+    document.getElementById("muuyht").innerHTML = muutyht;
+  }
+  else if(otsikko == "Itsenäinen opiskelu"){
+    ioyht = ioyht + aika;
+    oppiyht = oppiyht + aika;
+    document.getElementById("itseyht").innerHTML = ioyht;
+    document.getElementById("opiskeluyht").innerHTML = oppiyht;
+  }
+  else if(otsikko == "Ruokailu"){
+    ruokayht = ruokayht + aika;
+    document.getElementById("ruokayht").innerHTML = ruokayht;
+  }
+}
+
+function varasto() {
+  
 }

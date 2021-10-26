@@ -5,6 +5,7 @@ body {
 
 h1 {
     text-align: center;
+    margin: 50px;
 }
 
 * {
@@ -14,6 +15,7 @@ h1 {
 ul {
   margin: 10;
   padding: 0;
+  list-style-type: none;
 }
 
 ul li {
@@ -54,3 +56,47 @@ ul li:hover {
   background-color: rgb(255, 245, 245);
 }
 
+.lomake {
+  width: 35%;
+  float: left;
+  padding: 20px;
+  border: 2px solid rgba(243, 144, 157, 0.493);
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.lista {
+  width: 60%;
+  float: right;
+}
+.yht {
+  border: 2px solid rgba(243, 144, 157, 0.493);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.eritelty {
+  border: 2px solid rgba(243, 144, 157, 0.493);
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+th, td {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: rgb(0, 34, 46);
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+th, td:hover {
+  background: rgb(0, 64, 87);
+}
