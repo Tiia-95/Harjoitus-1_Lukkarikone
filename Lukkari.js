@@ -20,6 +20,7 @@ var i;
 
 var paaAihe = "";
 var edetaanko = false;
+var juoksevaId = 1;
 
 function uusiElementti() {
   tarkastus();
@@ -27,7 +28,10 @@ function uusiElementti() {
     alert("VIRHE! Lisää puuttuva tieto!")
   } else {
     tyhjennys();
+    varastoi();
     var li = document.createElement("li");
+    li.id = juoksevaId;
+    juoksevaId ++;
     var inputValue = paaAihe;
     var t = document.createTextNode(inputValue);
     li.appendChild(t);
@@ -45,6 +49,8 @@ function uusiElementti() {
       close[i].onclick = function() {
         //Lista objekti poistetaan täällä
         var div = this.parentElement;
+        alert(localStorage.getItem(div.id));
+
         div.style.display = "none";
       }
     }
@@ -117,6 +123,10 @@ function tyhjennys() {
       ele[i].checked = false;
 }
 
+function varastoi() {
+  localStorage.setItem(juoksevaId, paaAihe);
+}
+
 var kaikki = 0;
 var treyht = 0;
 var otyht = 0;
@@ -156,6 +166,3 @@ function yhteenlasku(aika, otsikko) {
   }
 }
 
-function varasto() {
-  
-}
