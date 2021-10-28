@@ -11,11 +11,16 @@
     <link rel="stylesheet" href="Lukkari.css">
 
 <body>
-    <h1>Tervetuloa sivuille!</h1>
+    <h1>Tervetuloa laskemaan viikossa kulutettuja tunteja</h1>
 
     <div class="lista">
+        <div class="tyh">
+            <h4>Tyhjennä kaikki lisätyt tiedot:</h4>
+            <input type="button" id="tyhjenna" onclick="tyhjenna()" class="addBtn" value="Tyhjennä"\>
+        </div>
         <div class="yht">
             <h4>Viikolla käytetyt tunnit:</h4>
+            
             <table id=yhtLista>
                 <tr>
                     <td>Yhteensä: </td>
@@ -114,7 +119,7 @@
 
                 
 
-                <input type="button" onclick="uusiElementti()" class="addBtn" value="Lisää"\>
+                <input type="button" onclick="paaFunktio()" class="addBtn" value="Lisää"\>
 
                 <br><br>
         </form>

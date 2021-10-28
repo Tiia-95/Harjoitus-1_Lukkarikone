@@ -44,12 +44,12 @@ ul li:hover {
 
 .addBtn {
   background: rgb(233, 181, 188);
-  float: left;
   text-align: center;
   cursor: pointer;
   margin-top: 20px;
   transition: 0.3s;
   border-radius: 0;
+  padding: 5px 8px 5px 8px;
 }
 
 .addBtn:hover {
@@ -69,6 +69,15 @@ ul li:hover {
   width: 60%;
   float: right;
 }
+
+.tyh {
+  border: 2px solid rgba(243, 144, 157, 0.493);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
 .yht {
   border: 2px solid rgba(243, 144, 157, 0.493);
   border-radius: 5px;
@@ -82,6 +91,7 @@ ul li:hover {
   border-radius: 5px;
   padding: 10px;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 th, td {
@@ -99,4 +109,11 @@ th, td {
 
 th, td:hover {
   background: rgb(0, 64, 87);
+}
+
+#tyhjenna {
+  float: right;
+  right: 60px;
+  top: 150px;
+  position: absolute;
 }
